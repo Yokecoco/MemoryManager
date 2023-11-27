@@ -37,7 +37,7 @@ public class PCB {
 
     @Override
     public String toString() {
-        return processName + " (PID: " + processId + ", Priority: " + ", Status: " + status + ")";
+        return processName + " (PID: " + processId + ", Status: " + status + ")";
     }
 }
 

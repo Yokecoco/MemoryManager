@@ -77,6 +77,7 @@ public class Scheduler extends JFrame {
         runningQueue = new ArrayList<>(); //初始化运行队列
     }
 
+    // 添加进程
     private void addProcess() {
         int processId = Integer.parseInt(JOptionPane.showInputDialog("输入进程ID（Process ID）:")); // 获取用户输入的进程ID
         String processName = JOptionPane.showInputDialog("输入进程名称（Process Name）:"); // 获取用户输入的进程名称
@@ -141,9 +142,15 @@ public class Scheduler extends JFrame {
         if (selectedIndex != -1) { // 如果有选定的进程
             PCB pcb = pcbListModel.getElementAt(selectedIndex); // 获取选定的进程
             if(pcb.getStatus().equals("Blocked")){
-                blockQueue.remove(pcb);
-                pcb.setStatus("Ready");
-                readyQueue.add(pcb);
+                if(runningQueue.size()<1){ //运行队列为空时将已分配资源的进程设置为运行态
+                    blockQueue.remove(pcb);
+                    pcb.setStatus("running");
+                    runningQueue.add(pcb);
+                }else{  //运行队列不为空时则将已分配资源的进程设置为就绪态
+                    blockQueue.remove(pcb);
+                    pcb.setStatus("Ready");
+                    readyQueue.add(pcb);
+                }
             }
         }
     }
