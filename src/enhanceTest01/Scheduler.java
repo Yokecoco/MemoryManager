@@ -16,6 +16,7 @@ public class Scheduler extends JFrame {
     private ArrayList<PCB> readyQueue; // 就绪队列
     private ArrayList<PCB> blockQueue; // 阻塞队列
 
+
     public Scheduler() {
         setTitle("PCB-进程管理"); // 设置窗口标题
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 设置窗口关闭操作
