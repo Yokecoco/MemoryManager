@@ -60,7 +60,6 @@ public class Scheduler extends JFrame {
                 blockProcess();
             }
         });
-
         readyQueue = new ArrayList<>(); // 初始化就绪队列
         blockQueue = new ArrayList<>(); // 初始化阻塞队列
     }
